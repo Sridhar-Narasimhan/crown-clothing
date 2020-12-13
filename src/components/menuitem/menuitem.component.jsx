@@ -1,7 +1,10 @@
 import React from 'react';
 import  "./menuitem.styles.scss";
-const MenuItem = ({title,imageUrl,id,size}) =>(
-    <div key={id} className={`${size} menu-item`}>
+import {withRouter} from "react-router-dom";
+// eslint-disable-next-line no-restricted-globals
+const MenuItem = ({ key, title,imageUrl,size,match,linkUrl,history}) =>(
+    // eslint-disable-next-line no-restricted-globals
+    <div className={`${size} menu-item`} onClick={(props)=> { history.push(`${match.url}${linkUrl}`);}} >
      <div className="backgroundimage" style={{
          backgroundImage:`url(${imageUrl})`     
          }} ></div>   
@@ -14,4 +17,4 @@ const MenuItem = ({title,imageUrl,id,size}) =>(
 </div>
 )
 
-export default MenuItem;
+export default withRouter(MenuItem);
